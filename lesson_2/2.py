@@ -4,7 +4,7 @@
 even = 0
 odd = 0
 
-value = int(input('Value (natural): '))
+value = int(input('Число (натуральное): '))
 
 while value != 0:
     if value % 2 == 0:

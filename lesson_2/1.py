@@ -5,5 +5,27 @@
 #    знак операции. Также сообщать пользователю о невозможности деления на ноль, если он ввел 0 в качестве делителя.
 
 while True:
-    value = int(input('Value1: '))
-    sign = input("Sign: ")
+    value1 = int(input('Число1: '))
+    value2 = int(input('Число2: '))
+    while True:
+        sign = input('Оператор: (+-*/ или 0-выход): ')
+        if (sign == '0'):
+            exit()
+        if sign == '+':
+            result = value1 + value2
+            break
+        elif sign == '-':
+            result = value1 - value2
+            break
+        elif sign == '*':
+            result = value1 * value2
+            break
+        elif sign == '/':
+            if value2 == 0:
+                result = 'Деление на ноль'
+            else:
+                result = value1 / value2
+            break
+        else:
+            print('Неправильный оператор')
+    print(f'Результат: {result}\n')
