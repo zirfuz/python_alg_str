@@ -10,15 +10,15 @@ tries = 10
 print('Угадай число [0, 100]')
 
 while True:
-    value = int(input(f'(Осталось попыток {tries:{2}}): '))
-    if (value == r):
+    value = int(input(f'(Осталось попыток {tries:2}): '))
+    tries -= 1
+    if value == r:
         print(f'Угадал! {r}')
         break
-    tries -= 1
     if tries == 0:
         print(f'Не угадал: {r}')
         break
-    elif r > value:
+    if r > value:
         print('Больше')
     else:
         print('Меньше')

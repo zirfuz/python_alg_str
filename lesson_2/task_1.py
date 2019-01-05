@@ -7,6 +7,7 @@
 while True:
     value1 = int(input('Число1: '))
     value2 = int(input('Число2: '))
+
     while True:
         sign = input('Оператор: (+-*/ или 0-выход): ')
         if (sign == '0'):
@@ -28,4 +29,5 @@ while True:
             break
         else:
             print('Неправильный оператор')
+
     print(f'Результат: {result}\n')
