@@ -4,6 +4,7 @@
 
 import timeit
 
+
 # Алгоритм 1 (Без решета Эратосфена)
 def prime(i):
     def _is_prime(value):
@@ -69,7 +70,6 @@ file_not_sieve = open('not_sieve.txt', 'w')
 file_sieve = open('sieve.txt', 'w')
 
 # Вывод замеров timeit в файлы
-for i in range(1, 30):
+for i in range(1, 150):
     print(timeit.timeit('prime(i)', setup="from __main__ import prime, i", number=100), file=file_not_sieve)
     print(timeit.timeit('sieve.get(i)', setup="from __main__ import Sieve, sieve, i", number=100), file=file_sieve)
-
