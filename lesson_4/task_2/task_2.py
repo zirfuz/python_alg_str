@@ -3,6 +3,7 @@
 #   Используя алгоритм «Решето Эратосфена»
 
 import timeit
+import cProfile
 
 
 # Алгоритм 1 (Без решета Эратосфена)
@@ -64,7 +65,6 @@ def test_primes(n):
 # Test
 test_primes(200)
 
-
 # Файлы для замеров timeit
 file_not_sieve = open('not_sieve.txt', 'w')
 file_sieve = open('sieve.txt', 'w')
@@ -77,7 +77,6 @@ for i in range(2, 200):
     print(timeit.timeit('sieve.get(i)', setup="from __main__ import Sieve, sieve, i", number=100), file=file_sieve)
 print('timeit done.')
 
-
 # Замерим зависимость времени подготовки решета от n
 print()
 print('timeit (sieve_prepare) started...')
@@ -86,3 +85,15 @@ for i in range(2, 200):
     print(timeit.timeit('spam = Sieve(i)', setup="from __main__ import Sieve, i", number=100), file=file_sieve_prepare)
 print('timeit (sieve_prepare) done.')
 
+# cProfile
+print()
+print('Profiling (Not sieve)...')
+cProfile.run('prime(1000)')
+
+print()
+print('Profiling (Sieve)...')
+cProfile.run('sieve.get(1000)')
+
+print()
+print('Profiling (Sieve prepare)...')
+cProfile.run('spam = Sieve(1000)')
