@@ -14,12 +14,12 @@ def prime(i):
                 return False
         return True
 
-    value = 1
+    ret = 1
     while i > -1:
-        value += 1
-        if _is_prime(value):
+        ret += 1
+        if _is_prime(ret):
             i -= 1
-    return value
+    return ret
 
 
 # Алгоритм 2 (С решетом Эратосфена)
