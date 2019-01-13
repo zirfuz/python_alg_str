@@ -45,22 +45,27 @@ def test_sums(n):
 # Test
 test_sums(500)
 
-
 # Файлы для замеров timeit
 file_sum_rec = open('sum_rec.txt', 'w')
 file_sum_loop = open('sum_loop.txt', 'w')
 
 # Вывод замеров timeit в файлы
+print()
+print('timeit started...')
 for n in range(1, 500):
     print(timeit.timeit('sum_rec(n)', setup="from __main__ import sum_rec, n", number=100), file=file_sum_rec)
     print(timeit.timeit('sum_loop(n)', setup="from __main__ import sum_loop, n", number=100), file=file_sum_loop)
-
+print('timeit done.')
 
 # cProfile
+print()
+print('Profiling Algorithm 1...')
 sys.setrecursionlimit(3000)
 cProfile.run('sum_rec(2900)')
-cProfile.run('sum_loop(10000000)')
 
+print()
+print('Profiling Algorithm 2...')
+cProfile.run('sum_loop(10000000)')
 
 # Выводы:
 # Графики зависимости времени выполнения от величины n подтверждают линейную сложность обоих алгоритмов.
