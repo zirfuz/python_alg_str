@@ -72,7 +72,7 @@ file_sieve = open('sieve.txt', 'w')
 # Вывод замеров timeit в файлы
 print()
 print('timeit started...')
-for i in range(2, 100):
+for i in range(2, 200):
     print(timeit.timeit('prime(i)', setup="from __main__ import prime, i", number=100), file=file_not_sieve)
     print(timeit.timeit('sieve.get(i)', setup="from __main__ import Sieve, sieve, i", number=100), file=file_sieve)
 print('timeit done.')
@@ -82,7 +82,7 @@ print('timeit done.')
 print()
 print('timeit (sieve_prepare) started...')
 file_sieve_prepare = open('sieve_prepare.txt', 'w')
-for i in range(2, 100):
+for i in range(2, 200):
     print(timeit.timeit('spam = Sieve(i)', setup="from __main__ import Sieve, i", number=100), file=file_sieve_prepare)
 print('timeit (sieve_prepare) done.')
 
