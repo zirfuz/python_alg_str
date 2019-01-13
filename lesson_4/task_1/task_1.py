@@ -44,7 +44,7 @@ test_sums(500)
 file_sum_rec = open('sum_rec.txt', 'w')
 file_sum_loop = open('sum_loop.txt', 'w')
 
-# Вывод замеров в файлы
+# Вывод замеров timeit в файлы
 for n in range(1, 500):
     print(timeit.timeit('sum_rec(n)', setup="from __main__ import sum_rec, n", number=100), file=file_sum_rec)
     print(timeit.timeit('sum_loop(n)', setup="from __main__ import sum_loop, n", number=100), file=file_sum_loop)
