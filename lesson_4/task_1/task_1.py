@@ -27,7 +27,7 @@ def test_sum(n):
         assert sum_ == sum_loop(n)
     else:
         diff = abs(sum_rec(n) - sum_loop(n))
-        assert diff < 0.000000000000001
+        assert diff < 0.1 ** 10
     print(f'Test {n} OK')
 
 
