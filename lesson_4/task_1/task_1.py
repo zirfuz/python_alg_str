@@ -36,7 +36,7 @@ def test_sum(n):
     print(f'Test {n} OK')
 
 
-# Test (1..n)
+# Test 1..n
 def test_sums(n):
     for i in range(1, n):
         test_sum(i)
