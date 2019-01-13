@@ -5,6 +5,7 @@ import cProfile
 import sys
 
 
+# Алгоритм 1 (рекурсия)
 def sum_rec(n, x=1):
     if n == 1:
         return 1
@@ -12,6 +13,7 @@ def sum_rec(n, x=1):
     return sum_rec(n - 1, x) + x
 
 
+# Алгоритм 2 (цикл)
 def sum_loop(n):
     ret = 0
     x = 1
@@ -21,6 +23,7 @@ def sum_loop(n):
     return ret
 
 
+# Test
 def test_sum(n):
     lst = [None, 1, -0.5, 0.25, -0.125, 0.0625, -0.03125]
     if n < len(lst):
@@ -33,14 +36,17 @@ def test_sum(n):
     print(f'Test {n} OK')
 
 
+# Test (1..n)
 def test_sums(n):
     for i in range(1, n):
         test_sum(i)
 
 
+# Test
 test_sums(500)
 
 
+# Файлы для замеров timeit
 file_sum_rec = open('sum_rec.txt', 'w')
 file_sum_loop = open('sum_loop.txt', 'w')
 
