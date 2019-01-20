@@ -7,7 +7,8 @@
 import random
 
 NUMERALS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-NUM_DEC = { num : dec for dec, num in enumerate(NUMERALS) }
+NUM_DEC = {num: dec for dec, num in enumerate(NUMERALS)}
+
 
 def summ(value1, value2, base):
     len1 = len(value1)
@@ -48,6 +49,7 @@ def mult(value1, value2, base):
         result = summ(result, term, base)
     return result
 
+
 def test(iterations, base):
     def _base_n(num, b):
         return ((num == 0) and NUMERALS[0]) or (_base_n(num // b, b).lstrip(NUMERALS[0]) + NUMERALS[num % b])
@@ -73,7 +75,7 @@ def test(iterations, base):
     print()
 
 
-test(10000, 13)
+test(1000, 13)
 
 value1 = [ch.upper() for ch in list(input('Value1 = '))]
 value2 = [ch.upper() for ch in list(input('Value2 = '))]
