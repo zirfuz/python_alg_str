@@ -4,9 +4,7 @@
 #    Сохранить их как [‘A’, ‘2’] и [‘C’, ‘4’, ‘F’] соответственно.
 #    Сумма чисел из примера: [‘C’, ‘F’, ‘1’], произведение - [‘7’, ‘C’, ‘9’, ‘F’, ‘E’].
 
-
-value1 = [ch.upper() for ch in list(input('Value1 = '))]
-value2 = [ch.upper() for ch in list(input('Value2 = '))]
+import random
 
 
 def summ(value1, value2):
@@ -21,9 +19,9 @@ def summ(value1, value2):
     result = []
     mem = 0
     for i in range(len(value1) - 1, -1, -1):
-        sum_i = int(value1[i]) + int(value2[i])
-        result.insert(0, sum_i % 10 + mem)
-        mem = sum_i // 10
+        ii = int(value1[i]) + int(value2[i]) + mem
+        result.insert(0, ii % 10)
+        mem = ii // 10
     if (mem != 0):
         result.insert(0, mem)
     return [str(i) for i in result]
@@ -49,12 +47,39 @@ def mult(value1, value2):
     return result
 
 
-print()
+def test(iterations):
+    def _test(i, value1, value2):
+        print(f'Test {i:5} ({value1:8}, {value2:8}):', end='')
+        value1_ = list(str(value1))
+        value2_ = list(str(value2))
+        sum_ = summ(value1_, value2_)
+        mult_ = mult(value1_, value2_)
+        assert (value1 + value2 == int(''.join(sum_)))
+        assert (value1 * value2 == int(''.join(mult_)))
+        print(' OK')
+
+    for i in range(1, iterations + 1):
+        value1 = random.randint(0, 999999)
+        value2 = random.randint(0, 999999)
+        if random.randint(0, 10) == 0:
+            value1 = 0
+        if random.randint(0, 10) == 0:
+            value2 = 0
+        _test(i, value1, value2)
+    print()
+
+
+test(10000)
+
+value1 = [ch.upper() for ch in list(input('Value1 = '))]
+value2 = [ch.upper() for ch in list(input('Value2 = '))]
 
 sum_ = summ(value1, value2)
-sum_str = ''.join(sum_)
-print(f'Sum =  {sum_str}')
-
 mult_ = mult(value1, value2)
+
+sum_str = ''.join(sum_)
 mult_str = ''.join(mult_)
+
+print()
+print(f'Sum  = {sum_str}')
 print(f'Mult = {mult_str}')
