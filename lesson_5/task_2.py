@@ -8,6 +8,7 @@
 value1 = [ch.upper() for ch in list(input('Value1 = '))]
 value2 = [ch.upper() for ch in list(input('Value2 = '))]
 
+
 def sum_(value1, value2):
     len1 = len(value1)
     len2 = len(value2)
@@ -17,18 +18,18 @@ def sum_(value1, value2):
     else:
         for _ in range(len2, len1):
             value2.insert(0, '0')
-    value1.insert(0, '0')
-    value2.insert(0, '0')
-    result = [0] * len(value1)
+    result = []
     mem = 0;
     for i in range(len(value1) - 1, -1, -1):
         sum_i = int(value1[i]) + int(value2[i])
-        result[i] = sum_i % 10
-        result[i] += mem
+        result.insert(0, sum_i % 10 + mem)
         mem = sum_i // 10
-    if result[0] == 0:
-        result.pop(0)
+    if (mem != 0):
+        result.insert(0, mem)
     return [str(i) for i in result]
+
+
+# def mult(value1, value2):
 
 
 summ = sum_(value1, value2)
