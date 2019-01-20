@@ -31,10 +31,8 @@ for i in range(count):
     quarter_profits = tuple([float(input(f'    {j + 1}-й квартал: ')) for j in range(QUARTERS)])
     company = Company(name, quarter_profits)
     companies.append(company)
-    avg_profit += quarter_profits[0]
-    avg_profit += quarter_profits[1]
-    avg_profit += quarter_profits[2]
-    avg_profit += quarter_profits[3]
+    for profit in quarter_profits:
+        avg_profit += profit
     print()
 
 avg_profit /= count
