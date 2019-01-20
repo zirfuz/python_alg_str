@@ -27,19 +27,17 @@ def summ(value1, value2, base):
 
 
 def mult(value1, value2, base):
-    terms = deque()
-    len1 = len(value1)
-    len2 = len(value2)
-    for i in range(len2 - 1, -1, -1):
-        term = deque(['0'] * (len2 - i - 1))
+    terms = []
+    for num2 in reversed(value2):
         mem = 0
-        for j in range(len1 - 1, -1, -1):
-            ij = NUM_DEC[value2[i]] * NUM_DEC[value1[j]] + mem
+        term = deque(['0'] * len(terms))
+        for num1 in reversed(value1):
+            ij = NUM_DEC[num2] * NUM_DEC[num1] + mem
             term.appendleft(NUMERALS[ij % base])
             mem = ij // base
         if (mem != 0):
             term.appendleft(NUMERALS[mem])
-        terms.appendleft(term)
+        terms.append(term)
     result = ['0']
     for term in terms:
         result = summ(result, term, base)
