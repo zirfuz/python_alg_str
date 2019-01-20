@@ -10,22 +10,15 @@ import random
 NUMERALS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NUM_DEC = {num: dec for dec, num in enumerate(NUMERALS)}
 
-
 def summ(value1, value2, base):
-    len1 = len(value1)
-    len2 = len(value2)
     value1 = deque(value1)
     value2 = deque(value2)
-    if len1 < len2:
-        for _ in range(len1, len2):
-            value1.appendleft('0')
-    else:
-        for _ in range(len2, len1):
-            value2.appendleft('0')
     result = deque()
     mem = 0
-    for i in range(len(value1) - 1, -1, -1):
-        ii = NUM_DEC[value1[i]] + NUM_DEC[value2[i]] + mem
+    while value1 or value2:
+        num1 = value1.pop() if value1 else '0'
+        num2 = value2.pop() if value2 else '0'
+        ii = NUM_DEC[num1] + NUM_DEC[num2] + mem
         result.appendleft(NUMERALS[ii % base])
         mem = ii // base
     if (mem != 0):
