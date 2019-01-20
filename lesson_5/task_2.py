@@ -48,45 +48,32 @@ def mult(value1, value2, base):
         result = summ(result, term, base)
     return result
 
-
-
-
-# def base_n(num, b, numerals = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"):
-#     return ((num == 0) and numerals[0]) or (base_n(num // b, b, numerals).lstrip(numerals[0]) + numerals[num % b])
-#
-# for i in range(50):
-#     print(i, end=' ')
-#     print(base_n(i, 16), end=' ')
-#     print(int(base_n(i, 16), 16))
-
-
-
-def test(iterations):
+def test(iterations, base):
     def _base_n(num, b):
         return ((num == 0) and NUMERALS[0]) or (_base_n(num // b, b).lstrip(NUMERALS[0]) + NUMERALS[num % b])
 
     def _test(i, value1, value2):
         print(f'Test {i:5} ({value1:8}, {value2:8}):', end='')
-        value1_ = list(_base_n(value1, 16))
-        value2_ = list(_base_n(value2, 16))
-        sum_ = summ(value1_, value2_, 16)
-        mult_ = mult(value1_, value2_, 16)
-        assert (value1 + value2 == int(''.join(sum_), 16))
-        assert (value1 * value2 == int(''.join(mult_), 16))
+        value1_ = list(_base_n(value1, base))
+        value2_ = list(_base_n(value2, base))
+        sum_ = summ(value1_, value2_, base)
+        mult_ = mult(value1_, value2_, base)
+        assert (value1 + value2 == int(''.join(sum_), base))
+        assert (value1 * value2 == int(''.join(mult_), base))
         print(' OK')
 
     for i in range(1, iterations + 1):
-        value1 = random.randint(0, 99)
-        value2 = random.randint(0, 99)
-        # if random.randint(0, 10) == 0:
-        #     value1 = 0
-        # if random.randint(0, 10) == 0:
-        #     value2 = 0
+        value1 = random.randint(0, 999999)
+        value2 = random.randint(0, 999999)
+        if random.randint(0, 10) == 0:
+            value1 = 0
+        if random.randint(0, 10) == 0:
+            value2 = 0
         _test(i, value1, value2)
     print()
 
 
-test(10000)
+test(10000, 13)
 
 value1 = [ch.upper() for ch in list(input('Value1 = '))]
 value2 = [ch.upper() for ch in list(input('Value2 = '))]
