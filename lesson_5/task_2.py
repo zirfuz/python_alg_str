@@ -4,6 +4,7 @@
 #    Сохранить их как [‘A’, ‘2’] и [‘C’, ‘4’, ‘F’] соответственно.
 #    Сумма чисел из примера: [‘C’, ‘F’, ‘1’], произведение - [‘7’, ‘C’, ‘9’, ‘F’, ‘E’].
 
+from collections import deque
 import random
 
 NUMERALS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -13,37 +14,39 @@ NUM_DEC = {num: dec for dec, num in enumerate(NUMERALS)}
 def summ(value1, value2, base):
     len1 = len(value1)
     len2 = len(value2)
+    value1 = deque(value1)
+    value2 = deque(value2)
     if len1 < len2:
         for _ in range(len1, len2):
-            value1.insert(0, '0')
+            value1.appendleft('0')
     else:
         for _ in range(len2, len1):
-            value2.insert(0, '0')
-    result = []
+            value2.appendleft('0')
+    result = deque()
     mem = 0
     for i in range(len(value1) - 1, -1, -1):
         ii = NUM_DEC[value1[i]] + NUM_DEC[value2[i]] + mem
-        result.insert(0, NUMERALS[ii % base])
+        result.appendleft(NUMERALS[ii % base])
         mem = ii // base
     if (mem != 0):
-        result.insert(0, NUMERALS[mem])
+        result.appendleft(NUMERALS[mem])
     return [str(i) for i in result]
 
 
 def mult(value1, value2, base):
-    terms = []
+    terms = deque()
     len1 = len(value1)
     len2 = len(value2)
     for i in range(len2 - 1, -1, -1):
-        term = ['0'] * (len2 - i - 1)
+        term = deque(['0'] * (len2 - i - 1))
         mem = 0
         for j in range(len1 - 1, -1, -1):
             ij = NUM_DEC[value2[i]] * NUM_DEC[value1[j]] + mem
-            term.insert(0, NUMERALS[ij % base])
+            term.appendleft(NUMERALS[ij % base])
             mem = ij // base
         if (mem != 0):
-            term.insert(0, NUMERALS[mem])
-        terms.insert(0, term)
+            term.appendleft(NUMERALS[mem])
+        terms.appendleft(term)
     result = ['0']
     for term in terms:
         result = summ(result, term, base)
