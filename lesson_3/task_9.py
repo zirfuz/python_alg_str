@@ -27,7 +27,6 @@ for column in range(COLUMNS):
         if item < min_:
             min_ = item
     print(f'{min_:>{F_WIDTH}}', end=' ')
-    if max_min is None or min_ > max_min:
         max_min = min_
 
 print()
