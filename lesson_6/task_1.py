@@ -61,7 +61,6 @@ MIN = 1
 MAX = 10
 
 ARRAY = [random.randint(MIN, MAX) for _ in range(SIZE)]
-ARRAY=[1,2,3]
 print(ARRAY)
 print()
 
@@ -84,6 +83,7 @@ def f1():
 
     return min1, min2
 
+
 @PersistentLocals
 def f2():
     array = ARRAY.copy()
@@ -91,6 +91,7 @@ def f2():
     array.remove(min1)
     min2 = min(array)
     return min1, min2
+
 
 @PersistentLocals
 def f3():
@@ -102,15 +103,17 @@ def f3():
             min2 = value
     return ARRAY[min1_i], min2
 
+
 r1 = f1()
 r2 = f2()
 r3 = f3()
 
-assert(r1 == r2 == r3)
+assert (r1 == r2 == r3)
 
 f1.print_mem()
 f2.print_mem()
 f3.print_mem()
+
 
 # Выводы:
 # Алгоритмы f1 и f3 потребляют заметно меньше памяти чем f2.
