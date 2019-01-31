@@ -10,9 +10,10 @@ import random
 NUMERALS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 NUM_DEC = {num: dec for dec, num in enumerate(NUMERALS)}
 
+
 def summ(value1, value2, base):
-    value1 = deque(value1)
-    value2 = deque(value2)
+    value1 = list(value1)
+    value2 = list(value2)
     result = deque()
     mem = 0
     while value1 or value2:
@@ -59,8 +60,8 @@ def test(iterations, base):
         print(' OK')
 
     for i in range(1, iterations + 1):
-        value1 = random.randint(0, 999999)
-        value2 = random.randint(0, 999999)
+        value1 = random.randint(0, 9999)
+        value2 = random.randint(0, 99999)
         if random.randint(0, 10) == 0:
             value1 = 0
         if random.randint(0, 10) == 0:
@@ -69,7 +70,7 @@ def test(iterations, base):
     print()
 
 
-test(1000, 13)
+test(10000, 13)
 
 value1 = [ch.upper() for ch in list(input('Value1 = '))]
 value2 = [ch.upper() for ch in list(input('Value2 = '))]

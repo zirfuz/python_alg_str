@@ -6,16 +6,6 @@ from collections import defaultdict, deque, namedtuple
 
 QUARTERS = 4
 
-
-def avg(col):
-    if not col:
-        return 0
-    sum = 0
-    for value in col:
-        sum += value
-    return sum / len(col)
-
-
 Company = namedtuple('Company', 'name, quarter_profits')
 
 companies = deque()
