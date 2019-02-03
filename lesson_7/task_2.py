@@ -30,7 +30,7 @@ def merge_sort(array):
 
 
 def test():
-    array = [random.uniform(MIN, MAX - 1) for _ in range(LEN)]
+    array = [random.uniform(MIN, MAX) for _ in range(LEN)]
     ar1 = array.copy()
     ar2 = array.copy()
     ar1 = merge_sort(ar1)
