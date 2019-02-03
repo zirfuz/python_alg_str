@@ -30,7 +30,7 @@ def test():
 def test_n(n):
     for i in range(n):
         test()
-        print(f'test {i + 1: 4} OK')
+        print(f'Test {i + 1: 4} OK')
 
 
 test_n(100)
