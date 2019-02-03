@@ -6,9 +6,9 @@
 import random
 import statistics
 
-MIN = 0
-MAX = 10
-LEN = 2001
+MIN = -1000
+MAX = 1000
+LEN = 5001
 
 
 def median(array):
@@ -35,12 +35,29 @@ def median(array):
     return _median(array, len(array) // 2)
 
 
+def median_radix(array):
+    def _sort_radix(array):
+        min_ = min(array)
+        max_ = max(array)
+        len_ = max_ - min_ + 1
+        counters = [0] * len_
+        for item in array:
+            counters[item - min_] += 1
+        ret = []
+        for i in range(len_):
+            ret += [i + min_] * counters[i]
+        return ret
+
+    return _sort_radix(array)[len(array) // 2]
+
+
 def test():
     array = [random.randint(MIN, MAX) for _ in range(LEN)]
 
-    a1 = median(array)
-    a2 = statistics.median(array)
-    assert median(array) == statistics.median(array)
+    med = median(array)
+    med_radix = median_radix(array)
+    med_stts = statistics.median(array)
+    assert med == med_radix == med_stts
 
 
 def test_n(n):
@@ -55,4 +72,4 @@ print()
 array = [random.randint(MIN, MAX - 1) for _ in range(LEN)]
 print(array)
 
-print(median(array))
+print(f'Median: {median(array)}')

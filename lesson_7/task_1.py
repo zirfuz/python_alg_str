@@ -37,7 +37,9 @@ test_n(100)
 print()
 
 array = [random.randint(MIN, MAX - 1) for _ in range(LEN)]
+print('Array:  ', end='')
 print(array)
 
 bubble_sort_rev(array)
+print('Sorted: ', end='')
 print(array)
