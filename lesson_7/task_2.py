@@ -47,7 +47,7 @@ def test_n(n):
 test_n(100)
 print()
 
-array = [random.uniform(MIN, MAX - 1) for _ in range(LEN)]
+array = [random.uniform(MIN, MAX) for _ in range(LEN)]
 print(['%5.2f' % i for i in array])
 
 array = merge_sort(array)
