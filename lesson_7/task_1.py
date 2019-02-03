@@ -10,7 +10,7 @@ MAX = 100
 LEN = 20
 
 
-def bubble_sort(array):
+def bubble_sort_rev(array):
     len_ar = len(array)
     for i in range(len_ar - 1):
         for j in range(i + 1, len_ar):
@@ -22,7 +22,7 @@ def test():
     array = [random.randint(MIN, MAX - 1) for _ in range(LEN)]
     ar1 = array.copy()
     ar2 = array.copy()
-    bubble_sort(ar1)
+    bubble_sort_rev(ar1)
     ar2 = sorted(ar2, reverse=True)
     assert ar1 == ar2
 
@@ -39,5 +39,5 @@ print()
 array = [random.randint(MIN, MAX - 1) for _ in range(LEN)]
 print(array)
 
-bubble_sort(array)
+bubble_sort_rev(array)
 print(array)
