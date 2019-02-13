@@ -8,10 +8,10 @@ class HashSet:
         self._lst = [[] for _ in range(lst_size)]
 
     def _hash(self, value):
-        letter = 26
+        LETTERS = 26
         index = 0
         for i, char in enumerate(value):
-            index += (ord(char) - ord('a') + 1) * letter ** i
+            index += (ord(char) - ord('a') + 1) * LETTERS ** i
         return index % len(self._lst)
 
     def __contains__(self, value):
