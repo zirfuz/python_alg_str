@@ -15,7 +15,6 @@ def huffman_tree(string):
     chars = Counter(string).most_common()
     tree = [Node(char[0], char[1]) for char in chars]
     tree = sorted(tree, key=lambda node: node.count)
-    tree[3], tree[4] = tree[4], tree[3]
     while len(tree) > 1:
         left = tree.pop(0)
         right = tree.pop(0)
